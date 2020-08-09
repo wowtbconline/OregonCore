@@ -15,6 +15,7 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "AnticheatMgr.h"
 #include "Common.h"
 #include "Database/DatabaseEnv.h"
 #include "Configuration/Config.h"
@@ -1043,6 +1044,15 @@ void World::LoadConfigSettings(bool reload)
 
     m_configs[CONFIG_MAX_RESULTS_LOOKUP_COMMANDS] = sConfig.GetIntDefault("Command.LookupMaxResults", 0);
 
+	//Anticheat
+    m_configs[CONFIG_ANTICHEAT_ENABLE] = sConfig.GetBoolDefault("Anticheat.Enable", true);
+    m_configs[CONFIG_ANTICHEAT_REPORTS_INGAME_NOTIFICATION] = sConfig.GetIntDefault("Anticheat.ReportsForIngameWarnings", 70);
+    m_configs[CONFIG_ANTICHEAT_DETECTIONS_ENABLED] = sConfig.GetIntDefault("Anticheat.DetectionsEnabled", 31);
+    m_configs[CONFIG_ANTICHEAT_MAX_REPORTS_FOR_DAILY_REPORT] = sConfig.GetIntDefault("Anticheat.MaxReportsForDailyReport", 70);
+    m_configs[CONFIG_ANTICHEAT_KICK_ENABLE] = sConfig.GetBoolDefault("Anticheat.KickEnable", false);
+    m_configs[CONFIG_ANTICHEAT_BAN_ENABLE] = sConfig.GetBoolDefault("Anticheat.BanEnable", false);
+    //m_configs[CONFIG_ANTICHEAT_BAN_TIME] = sConfig.GetStringDefault("Anticheat.BanTime", "1d");
+	
     // chat logging
     m_configs[CONFIG_CHATLOG_CHANNEL] = sConfig.GetBoolDefault("ChatLogs.Channel", false);
     m_configs[CONFIG_CHATLOG_WHISPER] = sConfig.GetBoolDefault("ChatLogs.Whisper", false);
@@ -2886,7 +2896,9 @@ void World::ResetDailyQuests()
 
     // change available dailies
     sPoolMgr.ChangeDailyQuests();
+	sAnticheatMgr->ResetDailyReportStates();
 }
+
 
 void World::SetPlayerLimit(int32 limit, bool /*needUpdate*/)
 {
