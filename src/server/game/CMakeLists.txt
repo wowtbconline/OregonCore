@@ -17,6 +17,7 @@ file(GLOB sources_localdir *.cpp *.h)
 file(GLOB_RECURSE sources_game 
   Accounts/*.*
   AI/*.*
+  Anticheat/*.*
   AuctionHouse/*.*
   AuctionHouseBot/*.*
   Battlegrounds/*.*
@@ -115,6 +116,7 @@ include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}/AI/CoreAI
   ${CMAKE_CURRENT_SOURCE_DIR}/AI/ScriptedAI
   ${CMAKE_CURRENT_SOURCE_DIR}/AI/SmartScripts
+  ${CMAKE_CURRENT_SOURCE_DIR}/Anticheat
   ${CMAKE_CURRENT_SOURCE_DIR}/AuctionHouse
   ${CMAKE_CURRENT_SOURCE_DIR}/AuctionHouseBot
   ${CMAKE_CURRENT_SOURCE_DIR}/Battlegrounds
