@@ -348,7 +348,7 @@ void WorldSession::HandleMovementOpcodes(WorldPacket& recv_data)
 
 	if (plMover)
 		{
-        sAnticheatMgr- > > StartHackDetection(plMover, movementInfo, opcode);
+        sAnticheatMgr->StartHackDetection(plMover, movementInfo, opcode);
   	    }
     if (plMover) // Hook for OnPlayerMove
         sScriptMgr.OnPlayerMove(plMover, movementInfo, opcode);
