@@ -32,3 +32,4 @@ If you have found a bug you may report it on our bugtracker, issues must include
 [6]: https://forums.oregon-core.net/
 [7]: https://travis-ci.org/talamortis/OregonCore
 [8]: https://ci.appveyor.com/project/OregonCore/OregonCore/branch/master
+
